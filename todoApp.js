@@ -29,10 +29,18 @@ const addBtnTask = (event) => {
     inputBox.value = "";
 }
 
+const enterBtn = (event) => {
+    let userEnteredValue = inputBox.value;
+    if(userEnteredValue.trim() != 0 && event.keyCode === 13){
+        addBtnTask();
+    }
+}
+
 window.onload = showTasks;
 inputBox.addEventListener("keyup", btnActive);
 addBtn.addEventListener("click", addBtnTask);
 clearAllBtn.addEventListener("click", deleteAllTask)
+document.addEventListener("keyup", enterBtn);
 
 function showTasks() {
     let getLocalStorageData = localStorage.getItem("Todo List");
